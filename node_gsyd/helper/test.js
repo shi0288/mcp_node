@@ -264,5 +264,13 @@ console.log(dateMathUtil.daysBetween('2016-7-7 12:23:33','2016-07-01 00:00:00'))
 //    //    });
 //    //});
 
+//
+//var contidont={"a.name":4, "b.name":2};
+//
+//for(var key in contidont){
+//
+//    console.log(key);
+//    console.log(contidont[key]);
+//}
 
 
