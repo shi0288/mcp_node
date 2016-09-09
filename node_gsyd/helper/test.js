@@ -18,7 +18,7 @@ var calculateService = service.calculateService;
 var util = require('mcp_util');
 var dateMathUtil = util.dateMathUtil;
 
-//console.log(dateMathUtil.daysBetween('2016-7-7 12:23:33','2016-06-15 00:00:00'));
+console.log(dateMathUtil.daysBetween('2016-7-7 12:23:33','2016-07-01 00:00:00'));
 //
 //console.log(dateMathUtil.dateToString(dateMathUtil.dateMonthAdd('2017-03-23 00:00:00', 31, -11)));
 //var body = {};
@@ -45,16 +45,16 @@ var dateMathUtil = util.dateMathUtil;
 //back.months[1].days.push(day);
 //
 //console.log(JSON.stringify(back));
-
-var condMonths=[1,2,3,4,5,6,7,8,9,10,12];
-
-async.eachSeries(condMonths, function (condMonth, cb) {
-    console.log(condMonth);
-    cb(null);
-},function(){
-
-    console.log('ok');
-});
+//
+//var condMonths=[1,2,3,4,5,6,7,8,9,10,12];
+//
+//async.eachSeries(condMonths, function (condMonth, cb) {
+//    console.log(condMonth);
+//    cb(null);
+//},function(){
+//
+//    console.log('ok');
+//});
 
 
 //var info = [
@@ -264,5 +264,13 @@ async.eachSeries(condMonths, function (condMonth, cb) {
 //    //    });
 //    //});
 
+//
+//var contidont={"a.name":4, "b.name":2};
+//
+//for(var key in contidont){
+//
+//    console.log(key);
+//    console.log(contidont[key]);
+//}
 
 
