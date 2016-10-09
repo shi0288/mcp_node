@@ -25,7 +25,7 @@ var q = 'server';
 async.waterfall([
     //connect mq
     function (cb) {
-        mqSource.init(q,function (err) {
+        mqSource.init(q, function (err) {
             cb(err);
         });
     },
@@ -65,7 +65,7 @@ async.waterfall([
                     //判断投资记录状态是否可投
                     function (invest, cb) {
                         log.info('判断投资记录状态是否可投');
-                        if (invest.status == investStatus.init) {
+                        if (invest != null && invest.status == investStatus.init) {
                             cb(null, invest);
                         } else {
                             //如果已经处理,则跳出不再继续
@@ -138,7 +138,7 @@ async.waterfall([
                         userBillSer.frozenMoney(invest.user_id,
                             invest.money,
                             userBillCons.payType.INVEST,
-                            "投资成功：冻结金额。借款ID:" + invest.loan_id + "  投资ID:" + invest.id,
+                                "投资成功：冻结金额。借款ID:" + invest.loan_id + "  投资ID:" + invest.id,
                             function (err, data) {
                                 cb(null);
                             });
