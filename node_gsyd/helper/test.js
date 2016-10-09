@@ -139,6 +139,11 @@ var noRepaySql = "SELECT sum(a.money) as allMoney,sum(a.interest) as allInterest
 console.log(noRepaySql);
 
 
+var i=1;
+var calCons=2
+
+console.log( i * calCons);
+
 //var temp=new Array();
 //temp.push(1);
 //temp.push(2);
