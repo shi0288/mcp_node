@@ -138,7 +138,7 @@ async.waterfall([
                         userBillSer.frozenMoney(invest.user_id,
                             invest.money,
                             userBillCons.payType.INVEST,
-                                "投资成功：冻结金额。借款ID:" + invest.loan_id + "  投资ID:" + invest.id,
+                                "出借成功：冻结金额。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
                             function (err, data) {
                                 cb(null);
                             });
