@@ -27,6 +27,8 @@ case $OPT in
          if [ ${#gatewayValue} -eq 0 ]; then
              nohup node Gateway.js target=$PROCESSID gtPort=9090 mq=backWay_1> /data/mcplog/gateway9090.log 2>&1 &
              nohup node Gateway.js target=$PROCESSID gtPort=9091 mq=backWay_2> /data/mcplog/gateway9091.log 2>&1 &
+             nohup node Gateway.js target=$PROCESSID gtPort=9092 mq=backWay_3> /data/mcplog/gateway9092.log 2>&1 &
+             nohup node Gateway.js target=$PROCESSID gtPort=9093 mq=backWay_4> /data/mcplog/gateway9093.log 2>&1 &
              echo "Start Gateway.js success"
          fi
          if [ ${#runTimesValue} -eq 0 ]; then
@@ -70,6 +72,8 @@ case $OPT in
                fi
                nohup node Gateway.js target=$PROCESSID gtPort=9090 mq=backWay_1> /data/mcplog/gateway9090.log 2>&1 &
                nohup node Gateway.js target=$PROCESSID gtPort=9091 mq=backWay_2> /data/mcplog/gateway9091.log 2>&1 &
+               nohup node Gateway.js target=$PROCESSID gtPort=9092 mq=backWay_3> /data/mcplog/gateway9092.log 2>&1 &
+               nohup node Gateway.js target=$PROCESSID gtPort=9093 mq=backWay_4> /data/mcplog/gateway9093.log 2>&1 &
 
                if [ ${#runTimesValue} -ne 0 ];  then
                    kill -9  `ps -ef|grep RunTimes.js|grep -v grep|awk '{print $2}'`

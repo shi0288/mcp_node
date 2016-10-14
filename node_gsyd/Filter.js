@@ -54,7 +54,7 @@ Filter.prototype.startWeb = function () {
 
     app.post("/gs-filter/main/interface.htm", function (req, res) {
         var message = req.body.message;
-        var start = new Date().getTime();
+        //var start = new Date().getTime();
         self.handle(message, function (err, backMsg) {
             try {
                 res.type('application/json;charset=utf-8');
@@ -63,8 +63,8 @@ Filter.prototype.startWeb = function () {
             catch (err) {
                 log.info(err);
             }
-            var end = new Date().getTime();
-            log.info("用时:" + (end - start) + "ms");
+            //var end = new Date().getTime();
+            //log.info("用时:" + (end - start) + "ms");
         });
     });
 
@@ -82,7 +82,6 @@ Filter.prototype.startWeb = function () {
     });
     app.post("/main/notify.htm", function (req, res) {
         var message = req.body.message;
-        log.info(message);
         res.json({});
     });
 

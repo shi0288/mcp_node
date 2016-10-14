@@ -76,11 +76,11 @@ Gateway.prototype.startWeb = function () {
 
     app.post("/gs-filter/main/interface.htm", function (req, res) {
         var message = req.body.message;
-        var start = new Date().getTime();
+        //var start = new Date().getTime();
         self.handle(message, function (backMsgNode) {
             res.json(backMsgNode);
-            var end = new Date().getTime();
-            log.info("用时:" + (end - start) + "ms");
+            //var end = new Date().getTime();
+            //log.info("用时:" + (end - start) + "ms");
         });
     });
 
@@ -90,7 +90,7 @@ Gateway.prototype.startWeb = function () {
 
 Gateway.prototype.handle = function (message, cb) {
     var self = this;
-    log.info("收到的："+message);
+    //log.info("收到的："+message);
     try {
         var msgNode = JSON.parse(message);
         var headNode = msgNode.head;
@@ -115,7 +115,7 @@ Gateway.prototype.handle = function (message, cb) {
                 bodyNode.description = errCode.E0000.description;
             }
             var decodedBodyStr = JSON.stringify(bodyNode);
-            log.error(decodedBodyStr);
+            //log.error(decodedBodyStr);
             cb({head: backHeadNode, body: decodedBodyStr});
         });
     }

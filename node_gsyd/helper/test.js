@@ -18,7 +18,7 @@ var calculateService = service.calculateService;
 var util = require('mcp_util');
 var dateMathUtil = util.dateMathUtil;
 
-console.log(dateMathUtil.daysBetween('2016-7-7 12:23:33','2016-07-01 00:00:00'));
+//console.log(dateMathUtil.daysBetween('2016-7-7 12:23:33','2016-07-01 00:00:00'));
 //
 //console.log(dateMathUtil.dateToString(dateMathUtil.dateMonthAdd('2017-03-23 00:00:00', 31, -11)));
 //var body = {};

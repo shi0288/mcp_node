@@ -55,7 +55,6 @@ async.waterfall([
                 async.waterfall([
                     //查询当前投资者信息
                     function (cb) {
-                        log.info('查询当前投资者信息');
                         var bodyNode = JSON.parse(msg.content.toString());
                         var investTab = dc.main.get('invest');
                         investTab.findOne(bodyNode, {}, [], function (err, invest) {
@@ -64,7 +63,6 @@ async.waterfall([
                     },
                     //判断投资记录状态是否可投
                     function (invest, cb) {
-                        log.info('判断投资记录状态是否可投');
                         if (invest != null && invest.status == investStatus.init) {
                             cb(null, invest);
                         } else {
@@ -74,7 +72,6 @@ async.waterfall([
                     },
                     //查询当前投资项目信息
                     function (invest, cb) {
-                        log.info('查询当前投资项目信息');
                         var loan_id = invest.loan_id;
                         var loanTab = dc.main.get('loan');
                         loanTab.findOne({id: loan_id}, {}, [], function (err, loan) {
