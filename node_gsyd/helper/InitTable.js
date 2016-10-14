@@ -1,15 +1,11 @@
 var async = require('async');
 var dc = require('mcp_db').dc;
-var moment = require('moment');
-var cons = require('mcp_constants');
-var userType = cons.userType;
-var esut = require('easy_util');
-var digestUtil = esut.digestUtil;
-
+var prop = require('mcp_config').prop;
 
 var initTerm = function () {
     async.waterfall([
         function (cb) {
+            cosole.log(prop.main);
             dc.init(function (err) {
                 cb(err);
             });
@@ -17,22 +13,6 @@ var initTerm = function () {
         function (cb) {
             console.log("初始化应该成了");
 
-//            var table = dc.mg.get("customer");
-//            table.drop(table.create(fu console.log(err);nction (err) {
-//                var body = {};
-//                body.userId = 'Q0001';
-//                body.type = userType['CHANNEL'];
-//                body.name = '测试账户';
-//                body.st = 'adminlsidjnDoskdoffFFF';
-//                var now = new moment();
-//                body.createTime = now.valueOf();
-//                table.save(body, [], function (err) {
-//                    if (err) {
-//                        console.log(err);
-//                    }
-//                    cb(null);
-//                });
-//            }));
 
 
         }
