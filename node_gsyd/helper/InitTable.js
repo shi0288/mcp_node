@@ -5,7 +5,7 @@ var prop = require('mcp_config').prop;
 var initTerm = function () {
     async.waterfall([
         function (cb) {
-            cosole.log(prop.main);
+            console.log(prop.main);
             dc.init(function (err) {
                 cb(err);
             });
