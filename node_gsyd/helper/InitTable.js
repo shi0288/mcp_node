@@ -15,22 +15,26 @@ var initTerm = function () {
             });
         },
         function (cb) {
-            var table = dc.mg.get("customer");
-            table.drop(table.create(function (err) {
-                var body = {};
-                body.userId = 'Q0001';
-                body.type = userType['CHANNEL'];
-                body.name = '测试账户';
-                body.st = 'adminlsidjnDoskdoffFFF';
-                var now = new moment();
-                body.createTime = now.valueOf();
-                table.save(body, [], function (err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    cb(null);
-                });
-            }));
+            console.log("初始化应该成了");
+
+//            var table = dc.mg.get("customer");
+//            table.drop(table.create(fu console.log(err);nction (err) {
+//                var body = {};
+//                body.userId = 'Q0001';
+//                body.type = userType['CHANNEL'];
+//                body.name = '测试账户';
+//                body.st = 'adminlsidjnDoskdoffFFF';
+//                var now = new moment();
+//                body.createTime = now.valueOf();
+//                table.save(body, [], function (err) {
+//                    if (err) {
+//                        console.log(err);
+//                    }
+//                    cb(null);
+//                });
+//            }));
+
+
         }
     ], function (err, result) {
         console.log("end...........");
