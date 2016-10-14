@@ -13,8 +13,6 @@ var initTerm = function () {
         function (cb) {
             console.log("初始化应该成了");
 
-
-
         }
     ], function (err, result) {
         console.log("end...........");
