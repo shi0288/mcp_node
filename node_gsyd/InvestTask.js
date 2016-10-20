@@ -141,9 +141,12 @@ async.waterfall([
                             });
                     }
                 ], function (err) {
+                    console.log(err);
                     if (err) {
+                        console.log(false);
                         ackSend(msg, false);
                     } else {
+                        console.log(true);
                         ackSend(msg, true);
                     }
                 });
