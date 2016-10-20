@@ -48,8 +48,6 @@ async.waterfall([
             ch.assertQueue(q, {durable: false});
             ch.prefetch(1);  //多个消费时，分配规则
             var ackSend = function (msg, content) {
-                console.log(content);
-                console.log(new Buffer(content));
                 ch.sendToQueue(msg.properties.replyTo, new Buffer(content), {});
                 ch.ack(msg);
             };
