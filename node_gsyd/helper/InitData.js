@@ -78,5 +78,6 @@
 //    });
 //};
 
-
+console.log(new Buffer(true.toString()));
+console.log(new Buffer(false.toString()));
 //init();

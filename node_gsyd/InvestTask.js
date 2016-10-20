@@ -144,15 +144,10 @@ async.waterfall([
                             });
                     }
                 ], function (err) {
-                    console.log(err);
                     if (err) {
-                        var back={rst:false};
-                        console.log(back);
-                        ackSend(msg, back);
+                        ackSend(msg, false);
                     } else {
-                        var back={rst:true};
-                        console.log(back);
-                        ackSend(msg, back);
+                        ackSend(msg, true);
                     }
                 });
             };
