@@ -78,6 +78,7 @@
 //    });
 //};
 
-console.log(new Buffer(true.toString()));
-console.log(new Buffer(false.toString()));
+var temp=new Buffer(true.toString());
+console.log(temp);
+console.log(temp.toString());
 //init();
