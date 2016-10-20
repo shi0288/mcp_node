@@ -146,11 +146,10 @@ async.waterfall([
                     var backNode={};
                     if (err) {
                         backNode.rst="1";
-                        ackSend(msg, JSON.stringify(backNode));
                     } else {
                         backNode.rst="2";
-                        ackSend(msg, JSON.stringify(backNode));
                     }
+                    ackSend(msg, JSON.stringify(backNode));
                 });
             };
             ch.consume(q, reply, {noAck: false});
