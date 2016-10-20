@@ -143,10 +143,13 @@ async.waterfall([
                             });
                     }
                 ], function (err) {
+                    var backNode={};
                     if (err) {
-                        ackSend(msg, false);
+                        backNode.rst=false;
+                        ackSend(msg, JSON.stringify(backNode));
                     } else {
-                        ackSend(msg, true);
+                        backNode.rst=true;
+                        ackSend(msg, JSON.stringify(backNode));
                     }
                 });
             };
