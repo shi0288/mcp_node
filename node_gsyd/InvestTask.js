@@ -49,7 +49,8 @@ async.waterfall([
             ch.prefetch(1);  //多个消费时，分配规则
             var ackSend = function (msg, content) {
                 console.log(content);
-                ch.sendToQueue(msg.properties.replyTo, content.toString(), {});
+                console.log(new Buffer(content.toString()));
+                ch.sendToQueue(msg.properties.replyTo, new Buffer(content.toString()), {});
                 ch.ack(msg);
             };
             var reply = function (msg) {
