@@ -143,11 +143,13 @@ async.waterfall([
                 ], function (err) {
                     console.log(err);
                     if (err) {
-                        console.log(false);
-                        ackSend(msg, false);
+                        var back={rst:false};
+                        console.log(back);
+                        ackSend(msg, back);
                     } else {
-                        console.log(true);
-                        ackSend(msg, true);
+                        var back={rst:true};
+                        console.log(back);
+                        ackSend(msg, back);
                     }
                 });
             };
