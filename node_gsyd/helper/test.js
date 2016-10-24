@@ -131,18 +131,18 @@ var dateMathUtil = util.dateMathUtil;
 //}, function(err){
 //    console.log("err is:" + err);
 //});
-
-var noRepaySql = "SELECT sum(a.money) as allMoney,sum(a.interest) as allInterest,sum(a.st_interest) as AllStInterest" +
-    " from invest_repay a " +
-    " where a.invest_id in (select id from invest b where b.user_id =(SELECT id from user c where c.username='" + "q1" + "')) and a.status=0";
-
-console.log(noRepaySql);
-
-
-var i=1;
-var calCons=2
-
-console.log( i * calCons);
+//
+//var noRepaySql = "SELECT sum(a.money) as allMoney,sum(a.interest) as allInterest,sum(a.st_interest) as AllStInterest" +
+//    " from invest_repay a " +
+//    " where a.invest_id in (select id from invest b where b.user_id =(SELECT id from user c where c.username='" + "q1" + "')) and a.status=0";
+//
+//console.log(noRepaySql);
+//
+//
+//var i=1;
+//var calCons=2
+//
+//console.log( i * calCons);
 
 //var temp=new Array();
 //temp.push(1);
@@ -321,3 +321,14 @@ console.log( i * calCons);
 //}
 //
 //console.log(dateMathUtil.daysBetween('2016-09-09 00:00:00', '2016-09-09 00:00:00'));
+
+
+var deadline=27;
+var sumInterest = calculateService.daysCal(deadline, 0.095, 150000);
+var repay_day = dateMathUtil.dateAdd('d', undefined, deadline);
+console.log(dateUtil.toString(repay_day));
+
+
+//var sumInterest = calculateService.monthCal(0.10, 30000);
+
+console.log(sumInterest);
