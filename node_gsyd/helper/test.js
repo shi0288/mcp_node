@@ -345,3 +345,4 @@ if(rhday>=tempDay){
 }
 console.log(moment(repayDay).format("YYYY-MM-DD"));
 
+var realFirstAccrueDay=dateMathUtil.dateMonthAdd(loanObj.final_time, loanObj.day_month, -loanObj.deadline + period);
