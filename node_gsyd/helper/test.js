@@ -333,111 +333,15 @@ var dateMathUtil = util.dateMathUtil;
 
 //console.log(sumInterest);
 
+var rhday=23;
 
-
-
-
-
-var startNum = 0;
-var i = 0;
-
-//正在处理的投资人顺序索引
-var order = 1;
-var loanObj={rate:0.089,money:8000000,deadline:1,day_month:21,final_time:'2016-11-23 00:00:00',accrue_time:'2016-10-25 00:00:00'};
-var sumInterest = calculateService.monthCal(loanObj.rate, loanObj.money);
-var loanRepayObjArr = new Array(loanObj.deadline);
-var hadRepayObjArr = new Array(loanObj.deadline);
-var firstMoneyDaysNum=0;
-var firstMoneyOutDaysNum=0;
-
-var data=new Array();
-var data1={money:170000};
-var data2={money:2740000};
-var data3={money:4740000};
-var data4={money:280000};
-var data5={money:70000};
-data[0]=data1;
-data[1]=data2;
-data[2]=data3;
-data[3]=data4;
-data[4]=data5;
-var count=5;
-
-async.eachSeries(data, function (investObj, callback) {
-    var _index = 0;
-    var invest_interest = 0;
-    var invest_st_interest = 0;
-    async.eachSeries(loanRepayObjArr, function (obj, repayCall) {
-        var period = _index + 1;
-        if (loanRepayObjArr[_index] == undefined) {
-            loanRepayObjArr[_index] = {};
-            loanRepayObjArr[_index].id = '借款计划_' + period;
-            loanRepayObjArr[_index].money = 0; //-----需叠加
-            loanRepayObjArr[_index].repay_day = dateMathUtil.dateMonthAdd(loanObj.final_time, loanObj.day_month, -loanObj.deadline + period);
-            if (period == 1) {
-                //日利息=[（第一次返息日-线上起息日）/（第一次返息日-线下起息日）] * 投资金额 * 年利率 / 12
-                //计息日到第一次还款日时间差
-                firstMoneyDaysNum= dateMathUtil.daysBetween(loanRepayObjArr[_index].repay_day, loanObj.accrue_time);
-                //上一次线下还款日到第一次还款日时间差
-                var outRepayTime = dateMathUtil.dateMonthAdd(loanObj.final_time, loanObj.day_month, -loanObj.deadline);
-                firstMoneyOutDaysNum= dateMathUtil.daysBetween(loanRepayObjArr[_index].repay_day, outRepayTime);
-                loanRepayObjArr[_index].interest = Math.round(firstMoneyDaysNum / firstMoneyOutDaysNum * sumInterest);
-            } else {
-                loanRepayObjArr[_index].interest = sumInterest;
-            }
-            loanRepayObjArr[_index].loan_id = loanObj.id;
-            loanRepayObjArr[_index].st_interest = 0;//-----需叠加
-            loanRepayObjArr[_index].period = period;
-            loanRepayObjArr[_index].all_period = loanObj.deadline;
-            loanRepayObjArr[_index].status = 0;//0为还款  1已还
-            //init 叠加每个投资人的本金和利息
-            hadRepayObjArr[_index] = {};
-            hadRepayObjArr[_index].hadInterest = 0;
-        }
-        //计算本金
-        var money = 0;
-        if (period == loanObj.deadline) {
-            money = investObj.money;
-        }
-        //计算利息
-        var interest = 0;
-        if (order == count) {
-            //最后一个投资人，用总的借款利息减去其他投资人的利息，保证借款与投资方利息持平
-            interest = loanRepayObjArr[_index].interest - hadRepayObjArr[_index].hadInterest;
-        } else {
-            if(period==1){
-                //日利息=[（第一次返息日-线上起息日）/（第一次返息日-线下起息日）] * 投资金额 * 年利率 / 12
-                interest =  Math.round(firstMoneyDaysNum / firstMoneyOutDaysNum * calculateService.monthCal(loanObj.rate, investObj.money));
-            }else{
-                interest = calculateService.monthCal(loanObj.rate, investObj.money);
-            }
-            hadRepayObjArr[_index].hadInterest += interest;
-        }
-        //即投计算
-        var st_interest = 0;
-        var cond = {};
-        cond.id = '出借人' + order+'_' + period;
-        cond.money = money;
-        cond.interest = interest;
-        cond.repay_day = loanRepayObjArr[_index].repay_day;
-        cond.st_interest = st_interest;
-        cond.create_time = dateUtil.getCurTime();
-        cond.period = period;
-        cond.all_period = loanObj.deadline;
-        //叠加借款人还款记录
-        loanRepayObjArr[_index].money += cond.money;
-        loanRepayObjArr[_index].st_interest += cond.st_interest;
-        //当前投资人投资记录
-        invest_interest += interest;
-        invest_st_interest += st_interest;
-        _index++;
-        console.log(JSON.stringify(cond));
-        repayCall();
-    }, function (err) {
-        order++;
-        callback();
-    });
-}, function (err) {
-    console.log('完成');
-});
+var tempDay=dateMathUtil.datePart('d');
+var tempMonth=dateMathUtil.datePart('m');
+var repayDay;
+if(rhday>=tempDay){
+    repayDay=dateMathUtil.pointDay(tempMonth,rhday);
+}else{
+    repayDay=dateMathUtil.pointDay(tempMonth+1,rhday);
+}
+console.log(moment(repayDay).format("YYYY-MM-DD"));
 
