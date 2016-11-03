@@ -415,7 +415,7 @@ loanObj.money=1000000;
 //79.17 	1月30日	还款为1月26日至2月24日利息
 //0.00 	2月25日	出借本金
     loanObj.rate=0.0925;
-    loanObj.money=80000*100;
+    loanObj.money=500*100;
     loanObj.day_month=22;
     loanObj.rhday=30;
     loanObj.final_time=new Date("2016-11-21");
