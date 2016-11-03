@@ -417,9 +417,9 @@ loanObj.money=1000000;
     loanObj.rate=0.0925;
     loanObj.money=10000*100;
     loanObj.day_month=28;
-    loanObj.rhday=21;
+    loanObj.rhday=28;
     loanObj.final_time=new Date("2017-06-27");
-    loanObj.accrue_time=new Date("2017-02-28");
+    loanObj.accrue_time=new Date("2017-03-01");
     var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
     for(var i=0;i<loanRepayObjArr.length;i++){
         console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
