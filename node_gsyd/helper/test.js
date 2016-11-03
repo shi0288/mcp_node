@@ -416,10 +416,10 @@ loanObj.money=1000000;
 //0.00 	2月25日	出借本金
     loanObj.rate=0.0925;
     loanObj.money=10000*100;
-    loanObj.day_month=26;
+    loanObj.day_month=28;
     loanObj.rhday=30;
-    loanObj.final_time=new Date("2017-03-25");
-    loanObj.accrue_time=new Date("2016-11-26");
+    loanObj.final_time=new Date("2017-06-27");
+    loanObj.accrue_time=new Date("2017-02-28");
     var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
     for(var i=0;i<loanRepayObjArr.length;i++){
         console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
