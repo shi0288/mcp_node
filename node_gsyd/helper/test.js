@@ -414,12 +414,12 @@ loanObj.money=1000000;
 //79.17 	12月30日	还款为12月26日至1月25日利息
 //79.17 	1月30日	还款为1月26日至2月24日利息
 //0.00 	2月25日	出借本金
-    loanObj.rate=0.0925;
-    loanObj.money=10000*100;
-    loanObj.day_month=28;
-    loanObj.rhday=28;
-    loanObj.final_time=new Date("2017-06-27");
-    loanObj.accrue_time=new Date("2017-03-01");
+//    loanObj.rate=0.0925;
+//    loanObj.money=5474*100;
+//    loanObj.day_month=29;
+//    loanObj.rhday=6;
+//    loanObj.final_time=new Date("2017-02-28");
+//    loanObj.accrue_time=new Date("2017-02-04");
     var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
     for(var i=0;i<loanRepayObjArr.length;i++){
         console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
