@@ -147,6 +147,7 @@ async.waterfall([
                     } else {
                         backNode.rst="2";
                     }
+                    console.log(err);
                     ackSend(msg, JSON.stringify(backNode));
                 });
             };
