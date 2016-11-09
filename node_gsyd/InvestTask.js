@@ -144,7 +144,7 @@ async.waterfall([
                                     userBillSer.frozenCouponMoney(invest.user_id,
                                         invest.coupon_money,
                                         userBillCons.payType.USE_COUPON,
-                                            "红包使用：冻结金额。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
+                                            "红包使用：冻结代金红包。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
                                         function (err, data) {
                                             cb(null);
                                         })
