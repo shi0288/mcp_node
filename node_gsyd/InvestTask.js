@@ -132,12 +132,25 @@ async.waterfall([
                     },
                     //冻结投资金额
                     function (invest, cb) {
+                        if(invest.coupon_money!=undefined){
+                            invest.money= invest.money-invest.coupon_money;
+                        }
                         userBillSer.frozenMoney(invest.user_id,
                             invest.money,
                             userBillCons.payType.INVEST,
                                 "出借成功：冻结金额。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
                             function (err, data) {
-                                cb(null);
+                                if(invest.coupon_money!=undefined){
+                                    userBillSer.frozenCouponMoney(invest.user_id,
+                                        invest.coupon_money,
+                                        userBillCons.payType.USE_COUPON,
+                                            "红包使用：冻结金额。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
+                                        function (err, data) {
+                                            cb(null);
+                                        })
+                                }else{
+                                    cb(null);
+                                }
                             });
                     }
                 ], function (err) {
