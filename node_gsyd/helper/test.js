@@ -420,10 +420,10 @@ loanObj.money=1000000;
 //    loanObj.rhday=6;
 //    loanObj.final_time=new Date("2017-02-28");
 //    loanObj.accrue_time=new Date("2017-02-04");
-    var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
-    for(var i=0;i<loanRepayObjArr.length;i++){
-        console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
-    }
+//    var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
+//    for(var i=0;i<loanRepayObjArr.length;i++){
+//        console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
+//    }
 
 //.584] [INFO] console - 2017-03-28
 //    [2016-11-03 16:36:55.585] [INFO] console - 2017-02-28
@@ -432,3 +432,4 @@ loanObj.money=1000000;
 //console - 2016-12-26
 //    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
 //    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
+
