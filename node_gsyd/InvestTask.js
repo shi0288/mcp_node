@@ -48,7 +48,7 @@ async.waterfall([
             ch.assertQueue(q, {durable: false});
             ch.prefetch(1);  //多个消费时，分配规则
             var ackSend = function (msg, content) {
-                ch.sendToQueue(msg.properties.replyTo, new Buffer(content.toString()), {});
+                ch.sendToQueue(msg.properties.replyTo, new Buffer(content), {});
                 ch.ack(msg);
             };
             var reply = function (msg) {
@@ -132,20 +132,36 @@ async.waterfall([
                     },
                     //冻结投资金额
                     function (invest, cb) {
+                        if(invest.coupon_money!=undefined){
+                            invest.money= invest.money-invest.coupon_money;
+                        }
                         userBillSer.frozenMoney(invest.user_id,
                             invest.money,
                             userBillCons.payType.INVEST,
                                 "出借成功：冻结金额。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
                             function (err, data) {
-                                cb(null);
+                                if(invest.coupon_money!=undefined){
+                                    userBillSer.frozenCouponMoney(invest.user_id,
+                                        invest.coupon_money,
+                                        userBillCons.payType.USE_COUPON,
+                                            "红包使用：冻结代金红包。借款ID:" + invest.loan_id + "  出借ID:" + invest.id,
+                                        function (err, data) {
+                                            cb(null);
+                                        })
+                                }else{
+                                    cb(null);
+                                }
                             });
                     }
                 ], function (err) {
+                    var backNode={};
                     if (err) {
-                        ackSend(msg, false);
+                        backNode.rst="1";
                     } else {
-                        ackSend(msg, true);
+                        backNode.rst="2";
                     }
+                    console.log(err);
+                    ackSend(msg, JSON.stringify(backNode));
                 });
             };
             ch.consume(q, reply, {noAck: false});

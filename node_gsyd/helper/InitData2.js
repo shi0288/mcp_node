@@ -9,11 +9,11 @@
 //            if (err !== null) {
 //                conn.close();
 //            }
-//            ch.assertQueue('testway1', {durable: false}, function (err, ok) {
+//            ch.assertQueue('testway2', {durable: false}, function (err, ok) {
 //                if (err !== null) {
 //                    conn.close();
 //                }
-//                ch.consume('testway1', function (msg) {
+//                ch.consume('testway2', function (msg) {
 //                    var backNode = JSON.parse(msg.content.toString());
 //                    console.log("`````````````");
 //                    console.log(msg);
@@ -23,10 +23,11 @@
 //                    ch.ack(msg);
 //                    ch.close();
 //                }, {noAck: false});
+//
 //                var content={};
-//                content.rst=1;
+//                content.rst=2;
 //                console.log(" servce send:" + JSON.stringify(content));
-//                ch.sendToQueue("testService", new Buffer(JSON.stringify(content)), {replyTo: "testway1"})
+//                ch.sendToQueue("testService", new Buffer(JSON.stringify(content)), {replyTo: "testway2"})
 //            })
 //        });
 //        process.once('SIGINT', function () {

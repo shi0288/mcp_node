@@ -131,18 +131,18 @@ var dateMathUtil = util.dateMathUtil;
 //}, function(err){
 //    console.log("err is:" + err);
 //});
-
-var noRepaySql = "SELECT sum(a.money) as allMoney,sum(a.interest) as allInterest,sum(a.st_interest) as AllStInterest" +
-    " from invest_repay a " +
-    " where a.invest_id in (select id from invest b where b.user_id =(SELECT id from user c where c.username='" + "q1" + "')) and a.status=0";
-
-console.log(noRepaySql);
-
-
-var i=1;
-var calCons=2
-
-console.log( i * calCons);
+//
+//var noRepaySql = "SELECT sum(a.money) as allMoney,sum(a.interest) as allInterest,sum(a.st_interest) as AllStInterest" +
+//    " from invest_repay a " +
+//    " where a.invest_id in (select id from invest b where b.user_id =(SELECT id from user c where c.username='" + "q1" + "')) and a.status=0";
+//
+//console.log(noRepaySql);
+//
+//
+//var i=1;
+//var calCons=2
+//
+//console.log( i * calCons);
 
 //var temp=new Array();
 //temp.push(1);
@@ -321,3 +321,115 @@ console.log( i * calCons);
 //}
 //
 //console.log(dateMathUtil.daysBetween('2016-09-09 00:00:00', '2016-09-09 00:00:00'));
+
+
+//var deadline=27;
+//var sumInterest = calculateService.daysCal(deadline, 0.095, 150000);
+//var repay_day = dateMathUtil.dateAdd('d', undefined, deadline);
+//console.log(dateUtil.toString(repay_day));
+
+
+//var sumInterest = calculateService.monthCal(0.10, 30000);
+
+//console.log(sumInterest);
+
+//var rhday=23;
+//
+//var tempDay=dateMathUtil.datePart('d');
+//var tempMonth=dateMathUtil.datePart('m');
+//var repayDay;
+//if(rhday>=tempDay){
+//    repayDay=dateMathUtil.pointDay(tempMonth,rhday);
+//}else{
+//    repayDay=dateMathUtil.pointDay(tempMonth+1,rhday);
+//}
+//console.log(moment(repayDay).format("YYYY-MM-DD"));
+//
+//var realFirstAccrueDay=dateMathUtil.dateMonthAdd(loanObj.final_time, loanObj.day_month, -loanObj.deadline + period);
+
+
+
+var loanObj={};
+loanObj.rate=0.095;
+loanObj.money=1000000;
+//
+////============第1种
+//loanObj.day_month=26;
+//loanObj.rhday=30;
+//loanObj.final_time=new Date("2017-02-25");
+//loanObj.accrue_time=new Date("2016-10-29");
+
+
+//71.51 	10月30日	还款为10月29日至11月25日利息
+//79.17 	11月30日	还款为11月26日至12月25日利息
+//79.17 	12月30日	还款为12月26日至1月25日利息
+//79.17 	1月30日	还款为1月26日至2月24日利息
+//0.00 	2月25日	出借本金
+
+//============第2种
+//loanObj.day_month=30;
+//loanObj.rhday=30;
+//loanObj.final_time=new Date("2017-02-28");
+//loanObj.accrue_time=new Date("2016-11-30");
+
+//79.17 	12月30日	还款为11月30日至12月29日利息
+//79.17 	1月30日	还款为12月30日至1月29日利息
+//79.17 	2月28日	1月30日至2月27日利息 + 出借本金
+
+
+//============第3种
+//loanObj.day_month=28;
+//loanObj.rhday=30;
+//loanObj.final_time=new Date("2017-06-27");
+//loanObj.accrue_time=new Date("2017-02-28");
+
+//79.17 	3月30日	还款为2月28日至3月29日利息
+//79.17 	4月30日	还款为3月30日至4月29日利息
+//79.17 	5月30日	还款为4月30日至5月29日利息
+//79.17 	6月27日	5月30日至6月26日利息 + 出借本金
+
+
+//============第4种
+//loanObj.day_month=30;
+//loanObj.rhday=30;
+//loanObj.final_time=new Date("2017-02-28");
+//loanObj.accrue_time=new Date("2016-10-31");
+
+
+//79.17 	11月30日	还款为10月31日至11月29日利息
+//79.17 	12月30日	还款为11月30日至12月29日利息
+//79.17 	1月30日	还款为12月30日至1月29日利息
+//79.17 	2月28日	1月30日至2月27日利息 + 出借本金
+
+
+
+//============第5种
+//loanObj.day_month=26;
+//loanObj.rhday=30;
+//loanObj.final_time=new Date("2017-02-25");
+//loanObj.accrue_time=new Date("2016-11-03");
+
+//58.74 	11月3日	还款为11月3日至11月25日利息
+//79.17 	11月30日	还款为11月26日至12月25日利息
+//79.17 	12月30日	还款为12月26日至1月25日利息
+//79.17 	1月30日	还款为1月26日至2月24日利息
+//0.00 	2月25日	出借本金
+//    loanObj.rate=0.0925;
+//    loanObj.money=5474*100;
+//    loanObj.day_month=29;
+//    loanObj.rhday=6;
+//    loanObj.final_time=new Date("2017-02-28");
+//    loanObj.accrue_time=new Date("2017-02-04");
+//    var loanRepayObjArr=calculateService.outRhjfAyfx(loanObj);
+//    for(var i=0;i<loanRepayObjArr.length;i++){
+//        console.log(moment(loanRepayObjArr[i].repay_day).format("YYYY-MM-DD")+'  '+loanRepayObjArr[i].money/100+'  '+loanRepayObjArr[i].interest/100);
+//    }
+
+//.584] [INFO] console - 2017-03-28
+//    [2016-11-03 16:36:55.585] [INFO] console - 2017-02-28
+//    [2016-11-03 16:36:55.586] [INFO] console - 2017-02-28
+
+//console - 2016-12-26
+//    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
+//    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
+
