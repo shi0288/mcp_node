@@ -433,3 +433,5 @@ loanObj.money=1000000;
 //    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
 //    [2016-11-03 16:37:29.821] [INFO] console - 2016-11-26
 
+console.log(moment().format("YYYY-MM-DD HH:mm:ss"));
+
